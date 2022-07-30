@@ -52,6 +52,9 @@
                     <input type="text" placeholder="Content"
                         class="h-full pr-4 pl-1 flex-1 text-current bg-transparent focus:outline-none" id="linkBox"
                         value="https://google.com">
+                    <input type="text" placeholder="Content"
+                        class="h-full pr-4 pl-1 flex-1 text-current bg-transparent focus:outline-none" placeholder="Enter door #" id="linkBox1"
+                        value=" ">
                     <button class="h-full flex-2 pr-2 pl-2 border-l-gray-900 border-l-1 hover:bg-gray-700"
                         id="genBtn">Generate</button>
                 </div>
@@ -83,9 +86,13 @@
         }
 
         function genPng(val) {
+            let label = document.getElementById("linkBox1")
             const canvas = document.getElementById('canv')
             const ctx = canvas.getContext('2d')
+            ctx.font = "30px Arial";
+            ctx.fillText(label, 10, 50);
             const svg = genSvg(val)
+            
 
             const rend = Canvg.fromString(ctx, svg)
             rend.start()
@@ -101,6 +108,7 @@
             
             let btn = document.getElementById("genBtn")
             let link = document.getElementById("linkBox")
+            
             let qr = document.getElementById("qrcode");
 
             btn.onclick = () => {
